@@ -24,9 +24,9 @@ router.get('/:id', async (req, res) => {
       include: Product
     });
     res.status(200).json(category)
-    if(!category) {
-      return res.status(404).json({ message: 'Category does not exist!' })
-    }
+    // if(!category) {
+    //   return res.status(404).json({ message: 'Category does not exist!' })
+    // }
   } catch (err) {
     res.status(500).json(err)
   }
@@ -34,8 +34,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   // create a new category
-  const newCategory = await Category.create(req.body);
-  return res.json(newCategory);
+  const category = await Category.create(req.body);
+  return res.json(category);
 });
 
 router.put('/:id', async (req, res) => {
@@ -46,21 +46,22 @@ router.put('/:id', async (req, res) => {
     },
     {
       where: {
-        id: req.params.id
+        category_id: req.params.id
       }
     }
-  )
-  return res.json(req.body); 
+  );
+  return res.json(category); 
+  // req.body
 });
 
 router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
-  const deletedCategory = await Category.destroy({
+  const category = await Category.destroy({
     where: {
-      id: req.params.id
-    },
+      category_id: req.params.id,
+    }
   });
-  res.json(req.body)
+  return res.json(category);
 });
 
 module.exports = router;

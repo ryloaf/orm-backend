@@ -21,12 +21,12 @@ router.get('/:id', async (req, res) => {
   // be sure to include its associated Product data
   try {
     const tag = await Tag.findByPk(req.params.id, {
-      include: [{ model: Product, through: ProductTag }]
+      include: Product
     });
     res.status(200).json(tag)
-    if(!tag) {
-      return res.status(404).json({ message: 'Tag does not exist!' })
-    }
+    // if(!tag) {
+    //   return res.status(404).json({ message: 'Tag does not exist!' })
+    // }
   } catch (err) {
     res.status(500).json(err)
   }
@@ -34,33 +34,33 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   // create a new tag
-  const newTag = await Tag.create(req.body);
-  return res.json(newTag);
+  const tag = await Tag.create(req.body);
+  return res.json(tag);
 });
 
 router.put('/:id', async (req, res) => {
   // update a tag's name by its `id` value
-  await Tag.update(
+  const tag = await Tag.update(
     {
       tag_name: req.body.tag_name
     },
     {
       where: {
-        tag_id: req.params.id
+        id: req.params.id
       }
     }
-  )
-  return res.json(req.body);
+  );
+  return res.json(tag);
 });
 
 router.delete('/:id', async (req, res) => {
   // delete on tag by its `id` value
-  const deletedTag = await Tag.destroy({
+  const tag = await Tag.destroy({
     where: {
-      tag_id: req.params.id
+      id: req.params.id
     },
   });
-  res.json(req.body)
+  return res.json(tag)
 });
 
 module.exports = router;

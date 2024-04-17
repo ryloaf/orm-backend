@@ -6,7 +6,7 @@ class Category extends Model {}
 
 Category.init(
   {
-    id: {
+    category_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -22,7 +22,7 @@ Category.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Category',
+    modelName: 'category',
   }
 );
 

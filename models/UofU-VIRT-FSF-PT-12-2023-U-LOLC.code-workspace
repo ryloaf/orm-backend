@@ -1,0 +1,60 @@
+{
+    "folders": [
+        {
+            "name": "UofU-VIRT-FSF-PT-12-2023-U-LOLC",
+            "path": "../../../UofU-VIRT-FSF-PT-12-2023-U-LOLC"
+        },
+        {
+            "name": "backup",
+            "path": "../../backup"
+        },
+        {
+            "name": "dnd-character-builder",
+            "path": "../../dnd-character-builder"
+        },
+        {
+            "name": "express-note-taker",
+            "path": "../../express-note-taker"
+        },
+        {
+            "name": "media-tracking-blog",
+            "path": "../../media-tracking-blog"
+        },
+        {
+            "name": "mvc-tech-blog",
+            "path": "../../mvc-tech-blog"
+        },
+        {
+            "name": "password-generator-challenge-03",
+            "path": "../../password-generator-challenge-03"
+        },
+        {
+            "name": "readme-generator",
+            "path": "../../readme-generator"
+        },
+        {
+            "name": "rylee-express-note-taker",
+            "path": "../../rylee-express-note-taker"
+        },
+        {
+            "name": "sql-employee-tracker",
+            "path": "../../sql-employee-tracker"
+        },
+        {
+            "name": "svg-logo-maker",
+            "path": "../../svg-logo-maker"
+        },
+        {
+            "name": "weather-dashboard-challenge",
+            "path": "../../weather-dashboard-challenge"
+        },
+        {
+            "name": "work-day-scheduler-challenge",
+            "path": "../../work-day-scheduler-challenge"
+        },
+        {
+            "name": "orm-backend",
+            "path": ".."
+        }
+    ]
+}

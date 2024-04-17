@@ -28,14 +28,14 @@ router.get('/:id', async (req, res) => {
       include: Tag,
     });
     res.status(200).json(product)
-    if (!product) {
-      return res.status(404).json({ message: 'Product does not exist!!' })
-    }
-    res.status(200).json(product);
+    // if (!product) {
+    //   return res.status(404).json({ message: 'Product does not exist!!' })
+    // }
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 // create new product
 router.post('/', (req, res) => {
   /* req.body should look like this...
@@ -47,18 +47,15 @@ router.post('/', (req, res) => {
       tagIds: [1, 2, 3, 4]
     }
   */
-//  console.log(req);
-  Product.create(req.body)
-  //   {
-  //     product_name: req.body.product_name,
-  //     price: req.body.price,
-  //     stock: req.body.stock,
-  //     category_id: req.body.category_id,
-  //   }
-  // )
+  Product.create(
+  {
+      product_name: req.body.product_name,
+      price: req.body.price,
+      stock: req.body.product,
+      category_id: req.body.category_id
+  })
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
-      // console.log(product);
       if (req.body.tagIds.length) {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
@@ -125,12 +122,12 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
-  const deletedProduct = await Product.destroy({
+  const product = await Product.destroy({
     where: {
-      product_id: req.params.id
-    },
+      product_id: req.params.id,
+    }
   });
-  res.json(req.body)
+  return res.json(product);
 });
 
 module.exports = router;
